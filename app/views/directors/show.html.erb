@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @director.first_name %>
+</p>
+
+<h2>Movies:</h2>
+<ul>
+  <% for movie in @director.movies %>
+    <li><%= link_to movie.title, movie_path(movie)  %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_director_path(@director) %> |
+<%= link_to 'Back', directors_path %>
