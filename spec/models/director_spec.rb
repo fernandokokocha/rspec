@@ -12,14 +12,10 @@ RSpec.describe Director, :type => :model do
   end
 
   it "has movies array" do
-    category = Category.new(:name => "Sci-Fi")
-    category.save
-    director = Director.new(:first_name => "Jan", :last_name => "Kowalski")
-    director.save
-    movie1 = Movie.new(:title => "Movie 1", :category => category, :director => director)
-    movie1.save
-    movie2 = Movie.new(:title => "Movie 2", :category => category, :director => director)
-    movie2.save
+    category = Category.create(:name => "Sci-Fi")
+    director = Director.create(:first_name => "Jan", :last_name => "Kowalski")
+    movie1 = Movie.create(:title => "Movie 1", :category => category, :director => director)
+    movie2 = Movie.create(:title => "Movie 2", :category => category, :director => director)
     expect(director.movies).to eq([movie1, movie2])
   end
 end

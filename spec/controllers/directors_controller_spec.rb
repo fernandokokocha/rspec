@@ -24,11 +24,14 @@ RSpec.describe DirectorsController, :type => :controller do
   # Director. As you add validations to Director, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { :first_name => "Jan",
+      :last_name => "Kowalski"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { :first_name => nil,
+      :last_name => nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +106,17 @@ RSpec.describe DirectorsController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { :first_name => "Piotr",
+          :last_name => "Nowak"
+        }
       }
 
       it "updates the requested director" do
         director = Director.create! valid_attributes
         put :update, {:id => director.to_param, :director => new_attributes}, valid_session
         director.reload
-        skip("Add assertions for updated state")
+        expect(director.first_name).to eq("Piotr")
+        expect(director.last_name).to eq("Nowak")
       end
 
       it "assigns the requested director as @director" do
